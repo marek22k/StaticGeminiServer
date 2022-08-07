@@ -1,0 +1,74 @@
+---
+messages:
+  # These are error messages. If a %s, there is a more detailed explanation.
+  not_found: The requested resourse was not found.
+  request_line_empty: "No request line was sent."
+  uri_too_long: The URI is longer than the allowed 1024 characters. Therefore, the request is rejected.
+  no_scheme: "No scheme was passed in the requested URI. Therefore, the request is not processed."
+  wrong_scheme: "Scheme `%s` has been sent. However, this is a Gemini server which expects the scheme `gemini://`."
+  timeout: "The connection was held too long, causing a timeout. The connection is terminated."
+  path_injection_message: An invalid path was sent, which would have caused the server to misbehave. Therefore, the request was aborted.
+  domain_not_found: "A domain was requested which was not found on the server. Therefore, the request could not be processed."
+  wrong_port: "A recourse was requested on a port (%s) which does not belong to this server. The request is therefore aborted."
+  
+files:
+  # Here the file extension and the corresponding mimetype are defined.
+  ".gmi": "text/gemini"
+  ".gmni": "text/gemini"
+  ".gemini": "text/gemini"
+  ".txt": "text/plain"
+  ".html": "text/html"
+  ".htm": "text/html"
+  
+server:
+  # Host and port where the server should bind to
+  host: "::"
+  port: 1965
+  
+  # If the client does not send a request within [client_timeout] seconds, the
+  # server sends an error message and terminates the connection. In Clearnet, the
+  # number can be low. On darknets such as Tor or I2P, it is recommended to allow
+  # some tolerance time and increase the value.
+  client_timeout: 10
+  # If no corresponding mimetype is defined for a file above, it will be used.
+  default_mimetype: application/octet-stream
+  # If no certificate is available for an alias, it will be used.
+  default_certificates:
+  - default_cert_ec
+  - default_cert_rsa
+
+# Sites on the server
+sites:
+  # Name of the page. Can be anything.
+  site1:
+    # Path where the files are located that the server should deliver.
+    root_directory: "/home/bandura/gemini/site1/"
+    # When the user requests a directory, it tries to find this file. If it does not exist, NotFound is returned.
+    index: index.gmi
+    # These are the aliases (hosts) on which the page should be. For example, you
+    # bind a public server to all addresses and then you can enter domains.
+    # For example homepage.example.com
+    aliases:
+    - localhost
+
+# Each alias (host) is assigned its own certificate. You can specify multiple
+# certificates of different cryptographic types. During the TLS handshake the most
+# suitable certificate is chosen. It is possible to specify only one certificate.
+aliases:
+  localhost:
+  - default_cert_ec
+  - default_cert_rsa
+
+# Here the certificates or the names are linked to the actual certificate,
+# so to the files. The first argument is the key type, either `rsa` or `ec`.
+# After that the certificate file and then the key file.
+certificates:
+  default_cert_ec:
+  - ec
+  - "./ec.crt"
+  - "./ec.pem"
+  
+  default_cert_rsa:
+  - rsa
+  - "./rsa.crt"
+  - "./rsa.pem"
