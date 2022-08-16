@@ -72,7 +72,6 @@ class GeminiServer
       certs.each { |cert|
         ctx.add_certificate cert[0], cert[1]
       }
-      pp ctx.cert
       
       return ctx
     }
@@ -147,6 +146,11 @@ class GeminiServer
             
             if ! File.file? requested_file
               requested_file += "/#{@sitmgr.get_index_for_site(site)}"
+            end
+            
+            # case: index file not found or access on file is denied
+            if ! File.readable? requested_file
+              raise NotFoundGemini.new get_setting("messages", "not_found")
             end
             
             mime = @filmgr.get_mimetype(File.extname(requested_file))
