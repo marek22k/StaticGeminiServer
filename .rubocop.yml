@@ -1,6 +1,16 @@
 AllCops:
     NewCops: enable
 
+Metrics/MethodLength:
+  CountComments: false
+  Max: 200
+  
+Metrics/ClassLength:
+  Max: 2000
+
+Metrics/BlockLength:
+  Max: 100
+
 Layout/LineLength:
   Enabled: false
 
@@ -19,24 +29,14 @@ Layout/EmptyLinesAroundClassBody:
 Style/MethodDefParentheses:
   Enabled: false
 
-Metrics/MethodLength:
-  CountComments: false
-  Max: 200
-
 Lint/SelfAssignment:
   Enabled: false
 
 Style/GuardClause:
   Enabled: false
 
-Metrics/ClassLength:
-  Max: 2000
-
 Naming/VariableNumber:
   Enabled: false
-
-Metrics/BlockLength:
-  Max: 100
 
 Style/RedundantBegin:
   Enabled: false
