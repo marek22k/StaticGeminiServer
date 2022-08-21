@@ -1,4 +1,4 @@
-# Generate favicon.txt
+# Create favicon.txt
 
 Michael Lazar, with the motivation to make something joyful, has written a specification with which it is possible to have a favicon on a Gemini page.
 For this a file with the name "favicon.txt" is created in the root directory of the Gemini page. In this file you write a unicode character, typically an emoji. Browsers, which support this extension, load the "favicon.txt" when the page is opened and show the favicon. In contrast to HTTP/HTML favicon, favicons in Geminispace do not consist of self-made images, but emojis. The specification can be found at gemini://mozz.us/files/rfc_gemini_favicon.gmi.
