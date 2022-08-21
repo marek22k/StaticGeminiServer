@@ -12,3 +12,46 @@ Style/IfUnlessModifier:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Style/MethodDefParentheses:
+  Enabled: false
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 200
+
+Lint/SelfAssignment:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 2000
+
+Naming/VariableNumber:
+  Enabled: false
+
+Metrics/BlockLength:
+  Max: 100
+
+Style/RedundantBegin:
+  Enabled: false
+
+Style/ColonMethodCall:
+  Enabled: false
+
+Layout/SpaceAfterNot:
+  Enabled: false
+
+Layout/EmptyLinesAroundExceptionHandlingKeywords:
+  Enabled: false
+
+Style/SpecialGlobalVars:
+  Enabled: false
+
+Style/RescueStandardError:
+  Enabled: false
