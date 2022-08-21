@@ -25,6 +25,9 @@ server:
   host: "::"
   port: 1965
   
+  # see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html, default 2
+  security_level: 3
+  
   # If the client does not send a request within [client_timeout] seconds, the
   # server sends an error message and terminates the connection. In Clearnet, the
   # number can be low. On darknets such as Tor or I2P, it is recommended to allow

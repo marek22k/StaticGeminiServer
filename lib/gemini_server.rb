@@ -41,8 +41,6 @@ class GeminiServer
     @filmgr = filmgr
 
     @context = OpenSSL::SSL::SSLContext.new
-    # Require min tls version (spec 4.1)
-    @context.min_version = :TLS1_2
 
     # Implement sni
     @context.servername_cb = lambda do |arg|
@@ -63,13 +61,16 @@ class GeminiServer
       certs.each do |cert|
         ctx.add_certificate cert[0], cert[1]
       end
-
+      
+      set_context ctx
+      
       return ctx
     end
   end
 
   def load_settings settings
     @settings = settings
+    set_context @context
   end
 
   def start
@@ -83,6 +84,12 @@ class GeminiServer
 
   def get_setting cat, sub
     @settings[cat][sub]
+  end
+
+  def set_context ctx
+    # Require min tls version (spec 4.1)
+    ctx.min_version = :TLS1_2
+    ctx.security_level = get_setting('server', 'security_level').to_i
   end
 
   def listen
