@@ -1,0 +1,14 @@
+AllCops:
+    NewCops: enable
+
+Layout/LineLength:
+  Enabled: false
+
+Layout/LeadingEmptyLines:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
