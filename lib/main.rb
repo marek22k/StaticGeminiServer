@@ -20,6 +20,7 @@ def check_settings settings
   res = res and settings['server']['client_timeout']
   res = res and settings['server']['default_mimetype']
   res = res and settings['server']['default_certificates']
+  res = res and settings['server']['security_level']
 
   res = res and settings['sites']
   res = res and settings['aliases']
