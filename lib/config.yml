@@ -53,6 +53,9 @@ sites:
     # For example homepage.example.com
     aliases:
     - localhost
+    
+    # True, if the size of the file should be specified in the header mime type. False, if not.
+    size: false
 
 # Each alias (host) is assigned its own certificate. You can specify multiple
 # certificates of different cryptographic types. During the TLS handshake the most

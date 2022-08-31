@@ -151,6 +151,14 @@ class GeminiServer
 
             mime = @filmgr.get_mimetype(File.extname(requested_file))
             mime ||= get_setting('server', 'default_mimetype')
+            
+            if @sitmgr.is_size_enabled(site)
+              # file_stream.seek(0, :END)
+              # file_stream.seek(0, :SET)
+              # or
+              size = File.size requested_file
+              mime += "; size=#{size}"
+            end
 
             conn.print "20 #{mime}\r\n"
 
